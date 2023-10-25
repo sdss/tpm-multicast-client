@@ -44,7 +44,7 @@ def get_socket():
     return sock
 
 
-class TPMClientProtocol(asyncio.Protocol):
+class TPMClientProtocol(asyncio.DatagramProtocol):
     """Client protocol for the TPM datagram."""
 
     def __init__(self, callback: CallbackType, loop: asyncio.AbstractEventLoop):
