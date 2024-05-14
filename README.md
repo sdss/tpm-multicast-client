@@ -2,8 +2,8 @@
 
 ![Versions](https://img.shields.io/badge/python->=3.10-blue)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Test](https://github.com/sdss/tpm_multicast_client/actions/workflows/test.yml/badge.svg)](https://github.com/sdss/tpm_multicast_client/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/sdss/tpm_multicast_client/branch/main/graph/badge.svg)](https://codecov.io/gh/sdss/tpm_multicast_client)
+[![Test](https://github.com/sdss/tpm-multicast-client/actions/workflows/test.yml/badge.svg)](https://github.com/sdss/tpm-multicast-client/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/sdss/tpm-multicast-client/graph/badge.svg?token=eOF9ZykYgu)](https://codecov.io/gh/sdss/tpm-multicast-client)
 
 Listens to the TPM multicast stream and unpack the data into a status dictionary. This is a Python-only implementation of Jeff Hagen's ``tpmdgram.c``.
 
