@@ -13,8 +13,6 @@ import click
 
 from sdsstools.daemonizer import cli_coro
 
-from tpm_multicast_client import __version__, listen_to_multicast
-
 
 def pprint_datagram(data: dict):
     """Prints the TPM data."""
@@ -28,16 +26,49 @@ def pprint_datagram(data: dict):
     is_flag=True,
     help="Print version and exit.",
 )
+@click.option(
+    "--serve",
+    is_flag=True,
+    help="Run as the TPM server.",
+)
+@click.option(
+    "--port",
+    type=int,
+    default=19991,
+    help="Port for the TPM server.",
+)
+@click.option(
+    "--interval",
+    type=float,
+    default=1.0,
+    help="Interval in which to output data to the TPM server, in seconds.",
+)
 @cli_coro()
-async def tpm_multicast_client(version: bool = False):
+async def tpm_multicast_client(
+    version: bool = False,
+    serve: bool = False,
+    port: int = 19991,
+    interval: float = 1.0,
+):
     """TPM multicas client."""
 
     if version is True:
+        from tpm_multicast_client import __version__
+
         click.echo(__version__)
         sys.exit(0)
 
-    _, protocol = await listen_to_multicast(pprint_datagram)
-    await protocol.run_forever()
+    if serve is False:
+        from tpm_multicast_client.client import listen_to_multicast
+
+        _, protocol = await listen_to_multicast(pprint_datagram)
+        await protocol.run_forever()
+
+    else:
+        from tpm_multicast_client.server import tpm_server
+
+        click.echo(f"Serving TPM server on port {port}.")
+        await tpm_server(port=port, interval=interval)
 
 
 if __name__ == "__main__":

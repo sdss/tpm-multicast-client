@@ -64,6 +64,7 @@ omit = [
     "**/__init__.py",
     "**/tpm_multicast_client/__main__.py",
     "**/tpm_multicast_client/client.py",
+    "**/tpm_multicast_client/server.py",
 ]
 
 [tool.coverage.report]
