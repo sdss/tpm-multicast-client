@@ -14,7 +14,7 @@ import warnings
 
 from typing import Awaitable, Callable
 
-from tpm_multicast_client.tpmdgram import data2dict
+from tpm_multicast_client.unpack import unpack_tpm_data
 
 
 CallbackType = Callable[[dict], None | Awaitable[None]]
@@ -55,7 +55,7 @@ class TPMClientProtocol(asyncio.DatagramProtocol):
 
     def datagram_received(self, data, _):
         try:
-            dd = data2dict(data)
+            dd = unpack_tpm_data(data)
             if asyncio.iscoroutinefunction(self.callback):
                 asyncio.create_task(self.callback(dd))
             else:

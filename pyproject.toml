@@ -13,15 +13,16 @@ packages = [
 python = "^3.10,<4.0"
 sdsstools = "^1.0.0"
 
-[tool.poetry.build]
-script = "build.py"
-generate-setup-file = false
-
 [tool.poetry.group.dev.dependencies]
 ipython = ">=8.0.0"
 ipdb = ">=0.13.3"
 black = ">=21.10"
 ruff = ">=0.1.0"
+pytest = ">=5.2.2"
+pytest-cov = ">=2.8.1"
+pytest-mock = ">=1.13.0"
+pytest-sugar = ">=0.9.2"
+coverage = {version = ">=5.0", extras = ["toml"]}
 
 [tool.poetry.scripts]
 tpm-multicast-client = "tpm_multicast_client.__main__:tpm_multicast_client"
