@@ -1,6 +1,11 @@
 # tpm_multicast_client
 
-Listens to the TPM multicast stream and unpack the status dictionary using Jeff Hagen's `tpmdgram` code.
+![Versions](https://img.shields.io/badge/python->=3.10-blue)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Test](https://github.com/sdss/tpm_multicast_client/actions/workflows/test.yml/badge.svg)](https://github.com/sdss/tpm_multicast_client/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/sdss/tpm_multicast_client/branch/main/graph/badge.svg)](https://codecov.io/gh/sdss/tpm_multicast_client)
+
+Listens to the TPM multicast stream and unpack the data into a status dictionary. This is a Python-only implementation of Jeff Hagen's ``tpmdgram.c``.
 
 ## Installation
 
@@ -11,6 +16,12 @@ pip install sdss-tpm-multicast-client
 ```
 
 To install from source do
+
+```console
+pip install .
+```
+
+or, for development,
 
 ```console
 poetry install
