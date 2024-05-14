@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sdss-tpm-multicast-client"
-version = "0.3.0"
+version = "0.3.1a0"
 description = "TPM multicast client"
 authors = ["José Sánchez-Gallego <gallegoj@uw.edu>"]
 license = "BSD 3-Clause"
