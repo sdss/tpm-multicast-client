@@ -15,5 +15,5 @@ NAME = "sdss-tpm-multicast-client"
 __version__ = get_package_version(path=__file__, package_name=NAME)
 
 
-from .client import listen_to_multicast
+from .client import TPMClient, listen_to_multicast
 from .unpack import unpack_tpm_data

@@ -12,7 +12,7 @@ import socket
 import struct
 import warnings
 
-from typing import Awaitable, Callable
+from typing import Awaitable, Callable, Self
 
 from tpm_multicast_client.unpack import unpack_tpm_data
 
@@ -100,6 +100,37 @@ async def listen_to_multicast(callback: CallbackType):
         lambda: TPMClientProtocol(callback, loop),
         sock=get_socket(),
     )
+
+
+class TPMClient:
+    """A singleton class that listens to the TPM multicast."""
+
+    _instance: Self | None = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+
+        return cls._instance
+
+    def __init__(self):
+        # Prevent setting the data attribute to None if this is a reinitialisation
+        # of an instance that already existed.
+        already_initialized = hasattr(self, "data")
+        if already_initialized:
+            return
+
+        self.data: dict[str, int | float | str] | None = None
+
+    async def update_data(self, new_data: dict[str, int | float | str]):
+        """Updates the TPM data."""
+
+        self.data = new_data
+
+    async def listen(self):
+        """Listens to the TPM multicast."""
+
+        await listen_to_multicast(self.update_data)
 
 
 async def test():
