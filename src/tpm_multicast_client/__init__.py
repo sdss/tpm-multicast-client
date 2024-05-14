@@ -16,4 +16,4 @@ __version__ = get_package_version(path=__file__, package_name=NAME)
 
 
 from .client import listen_to_multicast
-from .tpmdgram import data2dict
+from .unpack import unpack_tpm_data
