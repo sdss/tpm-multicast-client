@@ -61,9 +61,9 @@ asyncio_mode = "auto"
 branch = true
 include = ["src/tpm_multicast_client/*"]
 omit = [
-    "*/__init__.py",
-    "*/src/tpm_multicast_client/__main__.py",
-    "*/src/tpm_multicast_client/client.py",
+    "**/__init__.py",
+    "**/src/tpm_multicast_client/__main__.py",
+    "**/src/tpm_multicast_client/client.py",
 ]
 
 [tool.coverage.report]
